@@ -1,0 +1,22 @@
+<form class="flex-container" [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
+    <h1>Bienvenido</h1>
+    <div class="d-flex justify-content-center">
+        <img class="img"
+            src="https://firebasestorage.googleapis.com/v0/b/registro-salud-web.appspot.com/o/logo-salud.png?alt=media"
+            alt="" srcset="">
+    </div>
+    <br>
+
+
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Usuario</span>
+        <input type="text" class="form-control" placeholder="User" formControlName="UsernameOrEmail" >
+    </div>
+    <br>
+    <div class="input-group mb-3">
+        <span class="input-group-text btn btn-secondary" id="basic-addon2">Contraseña</span>
+        <input type="password" class="form-control" placeholder="Password" formControlName="Password" >
+    </div>
+    <input type="submit" class="btn btn-primary btn-lg" value="Iniciar Sesion">
+
+</form>
