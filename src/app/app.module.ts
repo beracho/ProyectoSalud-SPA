@@ -8,10 +8,16 @@ import { AppComponent } from './app.component';
 // import { HomeComponent } from './components/home/home.component';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SeacrhMComponent } from './components/seacrh-m/seacrh-m.component';
+import { RegistrationAfiComponent } from './components/registration-afi/registration-afi.component';
+import { RegistrationBenComponent } from './components/registration-ben/registration-ben.component';
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    SeacrhMComponent,
+    RegistrationAfiComponent,
+    RegistrationBenComponent
     // LoginComponent,
     // RegistrationComponent,
     // HomeComponent

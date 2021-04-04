@@ -1,2 +1,14 @@
+<nav class="marginscont navbar navbar-expand-lg navbar-dark bg-primary">
 
-<p>home works!</p>
+    <span class="navbar-brand">{{ rolUser }}</span>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" routerLink="search">Registrar Paciente</a>
+            <a *ngIf="getRolName()" class="nav-item nav-link" routerLink="registrationAfi">Registrar Afiliafo</a>
+            <a *ngIf="getRolName()" class="nav-item nav-link" routerLink="registrationben">Registrar Beneficiario</a>
+            <a *ngIf="getRolName()" class="nav-item nav-link" routerLink="registration">Registrar Usuario</a>
+            <span class="nav-item nav-link" (click)="salir()">Salir de La cuenta</span>
+        </div>
+    </div>
+</nav>
+<router-outlet></router-outlet>
