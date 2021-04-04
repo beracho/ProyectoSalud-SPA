@@ -11,13 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { SeacrhMComponent } from './components/seacrh-m/seacrh-m.component';
 import { RegistrationAfiComponent } from './components/registration-afi/registration-afi.component';
 import { RegistrationBenComponent } from './components/registration-ben/registration-ben.component';
+import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     SeacrhMComponent,
     RegistrationAfiComponent,
-    RegistrationBenComponent
+    RegistrationBenComponent,
+    RegistroUsuarioComponent
     // LoginComponent,
     // RegistrationComponent,
     // HomeComponent

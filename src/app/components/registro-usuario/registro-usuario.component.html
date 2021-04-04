@@ -1,0 +1,38 @@
+<form class="flex-container" [formGroup]="regForm" (ngSubmit)="onRegister(regForm.value)">
+    <h1>Registrar Usuario</h1>
+
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Nombre</span>
+        <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Ap. Paterno</span>
+        <input type="text" class="form-control" placeholder="Ap. Paterno" formControlName="apPat">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Ap. Mat</span>
+        <input type="text" class="form-control" placeholder="Ap. Mat" formControlName="apMat">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Cargo o Ocupacion</span>
+        <input type="text" class="form-control" placeholder="Cargo o Ocupacion" formControlName="carOcu">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Especialidad</span>
+        <input type="text" class="form-control" placeholder="Especialidad" formControlName="especialidad">
+    </div>
+    <br>
+    <div class="input-group mb-3">
+        <span class="input-group-text btn btn-secondary" id="basic-addon2">Contraseña</span>
+        <input type="password" class="form-control" placeholder="Contraseña" formControlName="Password">
+    </div>
+    <input type="submit" class="btn btn-primary btn-lg" value="Iniciar Sesion">
+
+
+
+</form>

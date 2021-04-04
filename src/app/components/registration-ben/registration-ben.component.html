@@ -1,1 +1,109 @@
-<p>registration-ben works!</p>
+<form class="flex-container" [formGroup]="BenFrom" (ngSubmit)="regBen(BenFrom.value)">
+    <h1>Registro Beneficiario</h1>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Titular</span>
+        <input type="text" class="form-control" placeholder="Titular" formControlName="titular">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Ap. Paterno</span>
+        <input type="text" class="form-control" placeholder="Ap. Paterno" formControlName="apPat">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Ap. Materno</span>
+        <input type="text" class="form-control" placeholder="Ap. Matern" formControlName="apMat">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Nombre</span>
+        <input type="text" class="form-control" placeholder="Nombre" formControlName="Nombre">
+    </div>
+    <br>
+    <div class="container">
+        <!-- ! radioButton -->
+        <div class="form-check">
+            <input class="form-check-input" formControlName="sexo" type="radio" value="Femenino" checked>
+            <label class="form-check-label" for="exampleRadios1">
+                Femenino
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" formControlName="sexo" type="radio" value="Masculino">
+            <label class="form-check-label" for="exampleRadios2">
+                Masculino
+            </label>
+        </div>
+        <!-- ! radioButton -->
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Cedula Identidad</span>
+        <input type="text" class="form-control" placeholder="Nombre" formControlName="ci">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Estado Civil</span>
+        <input type="text" class="form-control" placeholder="Estado Civil" formControlName="estcv">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Ocupacion</span>
+        <input type="text" class="form-control" placeholder="Ocupacion" formControlName="Ocupacion">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Edad</span>
+        <input type="text" class="form-control" placeholder="Edad" formControlName="edad">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Regional</span>
+        <input type="text" class="form-control" placeholder="Regional" formControlName="Regional">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Fecha Nacimiento</span>
+        <input type="date" class="form-control" placeholder="Fecha Nacimiento" formControlName="fechaNac">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Departamento De Nac.</span>
+        <input type="text" class="form-control" placeholder="Departamento De Nac." formControlName="depNac">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Lugar de Nacimiento</span>
+        <input type="text" class="form-control" placeholder="Lugar de Nacimiento" formControlName="lugNac">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Direccion</span>
+        <input type="text" class="form-control" placeholder="Direccion" formControlName="direccion">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Nro Telefono Fijo</span>
+        <input type="text" class="form-control" placeholder="Nro Telefono Fijo" formControlName="tFijo">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Nro de Telefono Movil</span>
+        <input type="text" class="form-control" placeholder="Nro de Telefono Movil" formControlName="tMovil">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Parentesco</span>
+        <input type="text" class="form-control" placeholder="Parentesco" formControlName="parentesco">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Fecha de Expiracion</span>
+        <input type="date" class="form-control" placeholder="Fecha de Expiracion" formControlName="fechaExp">
+    </div>
+    <br>
+    <br>
+    <input type="submit" class="btn btn-primary btn-lg" value="Iniciar Sesion">
+    <br>
+</form>

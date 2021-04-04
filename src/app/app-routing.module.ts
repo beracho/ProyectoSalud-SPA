@@ -6,7 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SeacrhMComponent } from './components/seacrh-m/seacrh-m.component';
 import { RegistrationAfiComponent } from './components/registration-afi/registration-afi.component';
 import { RegistrationBenComponent } from './components/registration-ben/registration-ben.component';
-
+import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 
 
 const routes: Routes = [
@@ -32,6 +32,9 @@ const routes: Routes = [
       },
       {
         path: 'registrationben', component: RegistrationBenComponent
+      },
+      {
+        path: 'registroUser', component: RegistroUsuarioComponent
       },
       {
         path: '***', component: HomeComponent
