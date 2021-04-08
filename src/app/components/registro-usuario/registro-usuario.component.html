@@ -1,37 +1,47 @@
 <form class="flex-container" [formGroup]="regForm" (ngSubmit)="onRegister(regForm.value)">
     <h1>Registrar Usuario</h1>
-
     <br>
     <div class="input-group">
-        <span class="input-group-text btn btn-secondary" id="basic-addon1">Nombre</span>
-        <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Email</span>
+        <input type="text" class="form-control" placeholder="Email" formControlName="Email">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Nombre De Usuario</span>
+        <input type="text" class="form-control" placeholder="Nombre de Usuario" formControlName="Username">
     </div>
     <br>
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Ap. Paterno</span>
-        <input type="text" class="form-control" placeholder="Ap. Paterno" formControlName="apPat">
+        <input type="text" class="form-control" placeholder="Ap. Paterno" formControlName="FirstName">
     </div>
     <br>
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Ap. Mat</span>
-        <input type="text" class="form-control" placeholder="Ap. Mat" formControlName="apMat">
+        <input type="text" class="form-control" placeholder="Ap. Mat" formControlName="LastName">
     </div>
     <br>
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Cargo o Ocupacion</span>
-        <input type="text" class="form-control" placeholder="Cargo o Ocupacion" formControlName="carOcu">
+        <input type="text" class="form-control" placeholder="Cargo o Ocupacion" formControlName="especialidad">
     </div>
     <br>
-    <div class="input-group">
-        <span class="input-group-text btn btn-secondary" id="basic-addon1">Especialidad</span>
-        <input type="text" class="form-control" placeholder="Especialidad" formControlName="especialidad">
+    <!-- ! radioButton -->
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">Especialidad</label>
+        <select formControlName="Rol" class="form-select" id="inputGroupSelect01">
+            <option value="admin">Administrador</option>
+            <option value="doctor">Doctor</option>
+            <option value="nurse">Enfermera (o)</option>
+        </select>
     </div>
+
     <br>
     <div class="input-group mb-3">
         <span class="input-group-text btn btn-secondary" id="basic-addon2">Contraseña</span>
         <input type="password" class="form-control" placeholder="Contraseña" formControlName="Password">
     </div>
-    <input type="submit" class="btn btn-primary btn-lg" value="Iniciar Sesion">
+    <input type="submit" class="btn btn-primary btn-lg" value="Registrar">
 
 
 
