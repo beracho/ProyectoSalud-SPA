@@ -1,0 +1,24 @@
+  <br>
+  <div class="container">
+    <div class="row row-cols-3">
+        <div *ngFor="let user of users" class="card" style="width: 18rem;">
+            <img [src]="user.photoUrl" class="img-src" alt="Img" >
+            <div class="card-body">
+              <h5 class="card-title">{{ user.firstName}} {{user.lastName}}</h5>
+              <p class="card-text">Email: {{user.email}}
+                  <br>
+                  Genero: {{user.gender}}
+                  <br>
+                  Edad: {{user.age}}
+                  <br>
+                  Nickname: {{user.nickname}}
+              </p>
+              <!-- 
+                  <a href="#" class="btn btn-primary">Ver Mas</a>
+              -->
+            </div>
+          </div>
+    </div>
+
+    
+  </div>

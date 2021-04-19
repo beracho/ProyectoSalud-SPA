@@ -15,12 +15,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['home/search']);
   }
 
-  getRolName(): boolean{
-    if (this.rolUser === 'admin'){
-      return true;
-    }
-    return false;
+  getRolName(): number{
+    return this.rolUser === 'admin' ? 1 : (this.rolUser === 'nurse' ? 2 : 0);
   }
+
   salir(): void{
     localStorage.removeItem('token');
     if (!localStorage.getItem('token')){

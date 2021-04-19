@@ -5,6 +5,7 @@ import { ResponseUserI } from '../../models/ResponseUser.Interface';
 import { HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserI } from 'src/app/models/User.model';
+import { PatientI } from 'src/app/models/PatientModel';
 
 
 @Injectable({
@@ -27,6 +28,24 @@ export class ServiceApiService {
   onRegisterUser(form: UserI): Observable<ResponseUserI>{
     const path = this.url + 'register';
     return this.http.post<ResponseUserI>(path, form);
+  }
+
+
+  getUserList(): Observable<UserI[]> {
+    // console.log(localStorage.getItem('token'));
+    const path = 'http://localhost:5000/api/Users';
+    return this.http.get<UserI[]>(path,  {headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    }});
+  }
+
+  getRegistrationNumber(numberReg): Observable<PatientI>{
+    const path = 'http://localhost:5000/api/patient/' + numberReg;
+    return this.http.get<PatientI>(path,  {
+      headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+      }
+    });
   }
 
 }

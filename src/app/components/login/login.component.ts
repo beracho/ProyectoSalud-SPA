@@ -49,9 +49,9 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('nameRol', data.rols[0].name);
             localStorage.setItem('UsernameOrEmail', data.user.Username);
             localStorage.setItem('idUser', data.user.id.toString());
-            console.log('data ' + localStorage.getItem('nameRol'));
+            // console.log('data ' + localStorage.getItem('nameRol'));
             this.router.navigate(['home']);
-            console.log('exist data');
+            // console.log('exist data');
 
           }else{
             this.suceessw = true;

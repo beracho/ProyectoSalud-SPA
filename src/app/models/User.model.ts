@@ -1,10 +1,15 @@
 export interface UserI {
+    id: number;
+    FirstName: string;
+    LastName: string;
+    gender: string; //
+    age: number; //
+    nickname: string;
+    photoUrl: string; //
+    email: string; //
     Username: string;
     Password: string;
     Email: string;
-    FirstName: string;
-    LastName: string;
     Rol: string;
     especialidad: string;
-    id: number;
 }

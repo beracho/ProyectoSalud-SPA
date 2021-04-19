@@ -9,11 +9,62 @@
         alt="" srcset="">
         <br>
     <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Nro Matricula" #matricula >
+        <input class="form-control me-2" type="search" placeholder="Nro Matricula" #matricula  required>
         <button class="btn btn-outline-primary" type="submit" (click)="searching(matricula.value)">Buscar</button>
     </form>
     <br>
     <div>
         Ingrese La matricula para Buscar La Informacion y Historial.
     </div>
+
+    
+
+
+    
+        
+        
+    
 </div>
+
+<div *ngIf="sw;" class="card text-center container-d">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Historial</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Informacion</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ pat.name }} {{ pat.lastName }}</h5>
+      <p class="card-text">
+        <img class="img" [src]="pat.photoUrl" alt="">
+        <br>
+        
+        CI:                   {{pat.ci}} {{pat.expeditionCi}} <br>
+        Genero:               {{pat.gender}} <br>
+        Ocupacion:            {{pat.ocupation}} <br>
+        Estado Civil:         {{pat.civilStatus}} <br>
+        Fecha De Nacimiento:  {{pat.birthDate}} <br>
+        Regional:             {{pat.regional}} <br>
+        Estado De Nacimiento: {{pat.birthState}} <br>
+        Ciudad De Nacimiento: {{pat.birthCity}} <br>
+        Tipo De Sangre:       {{pat.bloodType}} <br>
+        Tipo:                 {{pat.type}} <br>
+        Numero De Registro:   {{pat.registrationNumber}} <br>
+        <!--"kinship": null,
+        "observations": null,
+        "pathologicalBackground": null,
+        "locationId": null,
+        "telephone": null,
+        "cellPhone": null,
+        "insureId": 16,
+        "medicalHistoryId": 20-->
+      </p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+
+  
