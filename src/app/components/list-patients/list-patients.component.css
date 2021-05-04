@@ -1,0 +1,10 @@
+.img-src{
+    height: 200px;
+    width: 200px;
+    display:block;
+    margin:auto;       
+}
+.BoxSized{
+    height: 15px;
+    width: 15px;
+}

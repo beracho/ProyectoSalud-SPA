@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  name = localStorage.getItem('name');
   rolUser = localStorage.getItem('nameRol');
 
   constructor( private router: Router) { }

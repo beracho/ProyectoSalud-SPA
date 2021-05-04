@@ -1,0 +1,49 @@
+<br>
+<div class="container">
+    <div class="row row-cols-3">
+        <div *ngFor="let pt of pat" class="card" style="width: 18rem;">
+
+
+
+            <div class="card text-center container-d">
+                <div class="card-header">
+                    <ul class="nav nav-pills card-header-pills">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Historial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Informacion</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ pt.name }} {{ pt.lastName }}</h5>
+                    <p class="card-text">
+                        <img class="img-src" [src]="pt.photoUrl" alt="">
+                        <br>
+
+                        CI: {{pt.ci}} {{pt.expeditionCi}} <br>
+                        Genero: {{pt.gender}} <br>
+                        Ocupacion: {{pt.ocupation}} <br>
+                        Estado Civil: {{pt.civilStatus}} <br>
+                        Fecha De Nacimiento: {{pt.birthDate}} <br>
+                        Regional: {{pt.regional}} <br>
+                        Estado De Nacimiento: {{pt.birthState}} <br>
+                        Ciudad De Nacimiento: {{pt.birthCity}} <br>
+                        Tipo De Sangre: {{pt.bloodType}} <br>
+                        Tipo: {{pt.type}} <br>
+                        Numero De Registro: {{pt.registrationNumber}} <br>
+                        <!--"kinship": null,
+        "observations": null,
+        "pathologicalBackground": null,
+        "locationId": null,
+        "telephone": null,
+        "cellPhone": null,
+        "insureId": 16,
+        "medicalHistoryId": 20-->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

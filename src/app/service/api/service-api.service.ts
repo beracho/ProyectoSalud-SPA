@@ -47,5 +47,23 @@ export class ServiceApiService {
       }
     });
   }
+  getPatientsList(): Observable<PatientI[]> {
+    // console.log(localStorage.getItem('token'));
+    const path = 'http://localhost:5000/api/patient';
+    return this.http.get<PatientI[]>(path,  {headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    }});
+  }
+
+  updatePwd(pwd: string, pwdold: string, name: string, id: string): Observable<any>{
+    const path = 'localhost:5000/api/Users/' + id + '/ChangePassword';
+    return this.http.put<any>(path, {
+      UsernameOrEmail: name,
+      CurrentPassword: pwdold,
+      NewPassword: pwd
+      } , {headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    }});
+  }
 
 }

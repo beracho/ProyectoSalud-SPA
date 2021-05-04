@@ -8,7 +8,8 @@ import { RegistrationAfiComponent } from './components/registration-afi/registra
 import { RegistrationBenComponent } from './components/registration-ben/registration-ben.component';
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
-
+import { ListPatientsComponent } from './components/list-patients/list-patients.component';
+import { RestartPasswordComponent } from './components/restart-password/restart-password.component';
 const routes: Routes = [
   {
     path: '', redirectTo: 'login', pathMatch: 'full'
@@ -38,10 +39,15 @@ const routes: Routes = [
       },
       {
         path: 'lisUser', component: ListUserComponent
+      }, {
+        path: 'listpatient', component: ListPatientsComponent
       },
       {
         path: '***', component: HomeComponent
       },
+      {
+        path: 'resetPwd', component: RestartPasswordComponent
+      }
     ]
   },
 ];

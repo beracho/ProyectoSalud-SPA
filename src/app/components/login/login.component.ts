@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (localStorage.getItem('token')){
       this.router.navigate(['home']);
-      console.log('Exists Token' + localStorage.getItem('token'));
+      // console.log('Exists Token' + localStorage.getItem('token'));
     }else{
       console.log('not Token');
     }
@@ -43,11 +43,13 @@ export class LoginComponent implements OnInit {
           // console.log(data.user);
           // const decodeToken = jwtDecode(data.token);
           if (data){
+            // console.log(data.user.username);
+            localStorage.setItem('name', data.user.firstName);
             localStorage.setItem('token', data.token);
             // localStorage.setItem('id', data.user.id);
             // console.log(data.rols[0].name);
             localStorage.setItem('nameRol', data.rols[0].name);
-            localStorage.setItem('UsernameOrEmail', data.user.Username);
+            localStorage.setItem('UsernameOrEmail', data.user.username);
             localStorage.setItem('idUser', data.user.id.toString());
             // console.log('data ' + localStorage.getItem('nameRol'));
             this.router.navigate(['home']);

@@ -4,17 +4,20 @@
 
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Ap. Paterno</span>
-        <input type="text" class="form-control" placeholder="Ap. Paterno" formControlName="apPat">
+        <input type="text" class="form-control" placeholder="Ap. Paterno" formControlName="LastName">
     </div>
     <br>
-    <div class="input-group">
-        <span class="input-group-text btn btn-secondary" id="basic-addon1">Ap. Materno</span>
-        <input type="text" class="form-control" placeholder="Ap. Matern" formControlName="apMat">
-    </div>
+    <!--
+        <div class="input-group">
+            <span class="input-group-text btn btn-secondary" id="basic-addon1">Ap. Materno</span>
+            <input type="text" class="form-control" placeholder="Ap. Matern" formControlName="Name">
+        </div>
+
+    -->
     <br>
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Nombre</span>
-        <input type="text" class="form-control" placeholder="Nombre" formControlName="Nombre">
+        <input type="text" class="form-control" placeholder="Nombre" formControlName="Name">
     </div>
     <br>
     <div class="container">
@@ -22,13 +25,13 @@
 
         <!-- ! radioButton -->
         <div class="form-check">
-            <input class="form-check-input" formControlName="sexo" type="radio" value="Femenino" checked>
+            <input class="form-check-input" formControlName="Gender" type="radio" value="Femenino" checked>
             <label class="form-check-label" for="exampleRadios1">
                 Femenino
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" formControlName="sexo" type="radio" value="Masculino">
+            <input class="form-check-input" formControlName="Gender" type="radio" value="Masculino">
             <label class="form-check-label" for="exampleRadios2">
                 Masculino
             </label>
@@ -38,22 +41,17 @@
     <br>
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Cedula Identidad</span>
-        <input type="text" class="form-control" placeholder="Nombre" formControlName="ci">
+        <input type="text" class="form-control" placeholder="Nombre" formControlName="Ci">
     </div>
     <br>
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Estado Civil</span>
-        <input type="text" class="form-control" placeholder="Estado Civil" formControlName="estcv">
+        <input type="text" class="form-control" placeholder="Estado Civil" formControlName="CivilStatus">
     </div>
     <br>
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Ocupacion</span>
-        <input type="text" class="form-control" placeholder="Ocupacion" formControlName="Ocupacion">
-    </div>
-    <br>
-    <div class="input-group">
-        <span class="input-group-text btn btn-secondary" id="basic-addon1">Edad</span>
-        <input type="text" class="form-control" placeholder="Edad" formControlName="edad">
+        <input type="text" class="form-control" placeholder="Ocupacion" formControlName="Ocupation">
     </div>
     <br>
     <div class="input-group">
@@ -61,47 +59,42 @@
         <input type="text" class="form-control" placeholder="Regional" formControlName="Regional">
     </div>
     <br>
-    <div class="input-group">
-        <span class="input-group-text btn btn-secondary" id="basic-addon1">Regional</span>
-        <input type="text" class="form-control" placeholder="Regional" formControlName="fechaNac">
-    </div>
-    <br>
 
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Fecha Nacimiento</span>
-        <input type="date" class="form-control" placeholder="Fecha Nacimiento" formControlName="fechaNac">
+        <input type="date" class="form-control" placeholder="Fecha Nacimiento" formControlName="BirthDate">
     </div>
     <br>
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Departamento De Nac.</span>
-        <input type="text" class="form-control" placeholder="Departamento De Nac." formControlName="depNac">
+        <input type="text" class="form-control" placeholder="Departamento De Nac." formControlName="BirthState">
     </div>
     <br>
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Lugar de Nacimiento</span>
-        <input type="text" class="form-control" placeholder="Lugar de Nacimiento" formControlName="lugNac">
+        <input type="text" class="form-control" placeholder="Lugar de Nacimiento" formControlName="BirthCity">
     </div>
     <br>
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Direccion</span>
-        <input type="text" class="form-control" placeholder="Direccion" formControlName="direccion">
+        <input type="text" class="form-control" placeholder="Direccion" formControlName="Address">
     </div>
     <br>
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Nro Telefono Fijo</span>
-        <input type="text" class="form-control" placeholder="Nro Telefono Fijo" formControlName="tFijo">
+        <input type="text" class="form-control" placeholder="Nro Telefono Fijo" formControlName="Telephone">
     </div>
     <br>
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Nro de Telefono Movil</span>
-        <input type="text" class="form-control" placeholder="Nro de Telefono Movil" formControlName="tMovil">
+        <input type="text" class="form-control" placeholder="Nro de Telefono Movil" formControlName="CellPhone">
     </div>
     <br>
 
     <!-- ! radioButton -->
     <div class="input-group mb-3">
         <label class="input-group-text" for="inputGroupSelect01">Tipos De Sangre</label>
-        <select formControlName="tpS" class="form-select" id="inputGroupSelect01">
+        <select formControlName="BloodType" class="form-select" id="inputGroupSelect01">
             <option value="ORH">ORH</option>
             <option value="O +">O +</option>
             <option value="ORH +">ORH +</option>
