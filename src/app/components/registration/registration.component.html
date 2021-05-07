@@ -1,7 +1,15 @@
+
 <form class="flex-container" [formGroup]="loginForm" (ngSubmit)="registerUser(loginForm.value)">
     <h1>Registro Paciente</h1>
     <br>
-
+    
+      <div>
+        <input type="file" name="profile" (change)="onFileSelect($event)" />
+      </div>
+      <div>
+        <button type="submit">Upload</button>
+      </div>
+    
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Ap. Paterno</span>
         <input type="text" class="form-control" placeholder="Ap. Paterno" formControlName="LastName">
