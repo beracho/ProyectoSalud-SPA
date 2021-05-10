@@ -2,6 +2,7 @@ import { formatCurrency } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validator, Validators, FormArray, FormBuilder } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-registration',
@@ -39,9 +40,13 @@ export class RegistrationComponent implements OnInit {
     });
   ResponsPatolo = [];
   patologias = ['alergias', 'Asma Bronquial', 'cardiologicos', 'Oncologicos', 'Discracias Sanguinea', 'Diabetes', 'Ipertencion Arterial', 'Renales'];
-  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { }
 
-  ngOnInit(): void {
+  imagenPrevia: any;
+  files: Array<any>;
+  loading: boolean;
+  constructor(private sanitizer: DomSanitizer, private formBuilder: FormBuilder, private httpClient: HttpClient) {
+  }
+ ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       profile: ['']
     });
@@ -51,7 +56,7 @@ export class RegistrationComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', this.loginForm.get('profile').value);
 
-    this.httpClient.put<any>('URLPARH', formData).subscribe(
+    this.httpClient.put<any>(`localhost:5000/api/patient/${localStorage.getItem('idUser')}/UploadPhoto`, formData).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
     );
@@ -60,11 +65,48 @@ export class RegistrationComponent implements OnInit {
 
   // selecciona fike https://www.techiediaries.com/angular-formdata/
   onFileSelect(event): void {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.loginForm.get('profile').setValue(file);
+    // console.log(event.target.files[0]);
+    const imagen = event.target.files[0];
+    // console.log(imagen);
+    if (imagen) {
+      console.log('Si es una imagen');
+      // this.files.push(imagen);
+      this.blobFile(imagen).then((res: any) => {
+        console.log(res.base);
+        this.imagenPrevia = res.base;
+      });
+    } else {
+      console.log('No es imagen');
+
     }
   }
+
+
+  /**
+   *
+   * Esta funciones se encarga de enviar archivos al servidor
+   */
+
+  //  loadImages = () => {
+  //   try {
+  //     const formData = new FormData();
+  //     this.files.forEach((item) => {
+  //       formData.append('files', item)
+  //     });
+  //     this.loading = true;
+  //     this.httpClient.post(`http://localhost:3001/upload`, formData)
+  //       .subscribe(res => {
+  //         this.loading = false;
+  //         console.log('Carga exitosa');
+
+
+  //       });
+  //   } catch (e) {
+  //     console.log('ERROR', e);
+
+  //   }
+  // }
+
   registerUser(form): void {
     this.checkBoxValidate(form);
     // this.ResponsPatolo.filter(data => data).toString();
@@ -103,4 +145,30 @@ export class RegistrationComponent implements OnInit {
       this.ResponsPatolo[7] = this.patologias[7];
     }
   }
+
+  blobFile = async ($event: any) => new Promise((resolve, reject) => {
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          blob: $event,
+          image,
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          blob: $event,
+          image,
+          base: null
+        });
+      };
+
+    } catch (e) {
+      return null;
+    }
+  })
 }
