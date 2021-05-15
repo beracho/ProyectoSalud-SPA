@@ -6,12 +6,12 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" routerLink="search">Buscar</a>
-            <a *ngIf="getRolName()===1" class="nav-item nav-link" routerLink="registration">Registrar Paciente</a>
+            <a *ngIf="getRolName()===1 || getRolName()===0" class="nav-item nav-link" routerLink="registration">Registrar Paciente</a>
             <a *ngIf="getRolName()===1" class="nav-item nav-link" routerLink="registrationAfi">Registrar Afiliafo</a>
             <a *ngIf="getRolName()===1" class="nav-item nav-link" routerLink="registrationben">Registrar Beneficiario</a>
             <a *ngIf="getRolName()===1" class="nav-item nav-link" routerLink="registroUser">Registrar Usuario</a>
             <a  *ngIf="getRolName()===2" class="nav-item nav-link" routerLink="lisUser">Lista Usuario</a>
-            <a  *ngIf="getRolName()===2" class="nav-item nav-link" routerLink="listpatient">Lista Pacientes</a>
+            <a  *ngIf="getRolName()===2 || getRolName()===0" class="nav-item nav-link" routerLink="listpatient">Lista Pacientes</a>
             
             <span class="nav-item nav-link" (click)="salir()">Salir de La cuenta</span>
         </div>

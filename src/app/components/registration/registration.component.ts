@@ -44,17 +44,18 @@ export class RegistrationComponent implements OnInit {
   imagenPrevia: any;
   files: Array<any>;
   loading: boolean;
+  uploadForm: FormGroup;
   constructor(private sanitizer: DomSanitizer, private formBuilder: FormBuilder, private httpClient: HttpClient) {
   }
  ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      profile: ['']
+    this.uploadForm = this.formBuilder.group({
+      ImageFile: ['']
     });
   }
   // mandamos la peticion
   onSubmit(): void {
     const formData = new FormData();
-    formData.append('file', this.loginForm.get('profile').value);
+    formData.append('file', this.loginForm.get('ImageFile').value);
 
     this.httpClient.put<any>(`localhost:5000/api/patient/${localStorage.getItem('idUser')}/UploadPhoto`, formData).subscribe(
       (res) => console.log(res),
@@ -72,8 +73,9 @@ export class RegistrationComponent implements OnInit {
       console.log('Si es una imagen');
       // this.files.push(imagen);
       this.blobFile(imagen).then((res: any) => {
-        console.log(res.base);
         this.imagenPrevia = res.base;
+        this.uploadForm.get('ImageFile').setValue(event.target.files[0]);
+        console.log(this.imagenPrevia);
       });
     } else {
       console.log('No es imagen');

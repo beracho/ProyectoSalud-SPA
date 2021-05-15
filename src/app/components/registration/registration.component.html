@@ -6,17 +6,17 @@
         <input type="file" name="profile" (change)="onFileSelect($event)" />
     </div>
     <div>
-        <button type="submit">subir Archivo</button>
+        <button type="submit" (click)="onSubmit()">subir Archivo</button>
     </div>
-    <div>
+    <div *ngIf="!imagenPrevia">
         <img src="https://cdn2.iconfinder.com/data/icons/audio-16/96/user_avatar_profile_login_button_account_member-512.png"
             alt="img" width="100px">
     </div>
 
-    <div>
-        <label *ngIf="imagenPrevia" for="">Preview</label>
+    <div *ngIf="imagenPrevia">
+        <label >Preview</label>
         <div>
-            <img width="100px" [src]="imagenPrevia" alt="">
+            <img width="100px" height="100px" [src]="imagenPrevia" alt="">
         </div>
     </div>
     <div class="input-group">
