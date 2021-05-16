@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validator, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ServiceApiService } from 'src/app/service/api/service-api.service';
 
 @Component({
   selector: 'app-registration',
@@ -13,11 +14,11 @@ export class RegistrationComponent implements OnInit {
 
   loginForm = new FormGroup(
     {
-      ExpeditionCi: new FormControl(null, Validators.required),
       LastName: new FormControl(null, Validators.required),
       Name: new FormControl(null, Validators.required),
       Gender: new FormControl('', Validators.required),
       Ci: new FormControl('', Validators.required),
+      ExpeditionCi: new FormControl(null, Validators.required),
       CivilStatus: new FormControl('', Validators.required),
       Ocupation: new FormControl('', Validators.required),
       Regional: new FormControl('', Validators.required),
@@ -45,9 +46,14 @@ export class RegistrationComponent implements OnInit {
   files: Array<any>;
   loading: boolean;
   uploadForm: FormGroup;
-  constructor(private sanitizer: DomSanitizer, private formBuilder: FormBuilder, private httpClient: HttpClient) {
+
+
+  // tslint:disable-next-line:max-line-length
+  constructor(private api: ServiceApiService, private sanitizer: DomSanitizer, private formBuilder: FormBuilder, private httpClient: HttpClient) {
   }
- ngOnInit(): void {
+
+
+  ngOnInit(): void {
     this.uploadForm = this.formBuilder.group({
       ImageFile: ['']
     });
@@ -57,10 +63,12 @@ export class RegistrationComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', this.loginForm.get('ImageFile').value);
 
-    this.httpClient.put<any>(`localhost:5000/api/patient/${localStorage.getItem('idUser')}/UploadPhoto`, formData, {headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-      'Content-Type': `multipart/form-data`
-    }}).subscribe(
+    this.httpClient.put<any>(`localhost:5000/api/patient/${localStorage.getItem('idUser')}/UploadPhoto`, formData, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': `multipart/form-data`
+      }
+    }).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
     );
@@ -115,9 +123,14 @@ export class RegistrationComponent implements OnInit {
   registerUser(form): void {
     this.checkBoxValidate(form);
     // this.ResponsPatolo.filter(data => data).toString();
-    form.PathologicalBackground = this.ResponsPatolo.filter(data => data).toString();
-    console.log(form);
-    this.ResponsPatolo.forEach(data => console.log(data));
+    form.PathologicalBackground = this.ResponsPatolo.filter(data => `${data}: ${data ? true : false}`).toString();
+    console.log(form.PathologicalBackground);
+    this.api.registerPatient(form).subscribe(
+      data => {
+        console.log(data);
+      },
+      err => console.log(err)
+    );
   }
 
   obsCi(form): void {

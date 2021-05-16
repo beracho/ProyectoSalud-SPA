@@ -11,9 +11,18 @@ export class RestartPasswordComponent implements OnInit {
   pwd2 = '';
   pass = '';
   suceessw = false;
+  img = '';
+  dataUser;
   constructor(private api: ServiceApiService) { }
 
   ngOnInit(): void {
+    const id: string = localStorage.getItem('idUser');
+    this.api.getUserById(id).subscribe(
+      data => {
+        this.dataUser = data;
+        console.log(this.dataUser);
+      }
+    );
   }
 
   resetPwd(pwd, pwd2, pass): void{

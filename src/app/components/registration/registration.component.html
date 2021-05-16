@@ -1,7 +1,6 @@
 <form class="flex-container" [formGroup]="loginForm" (ngSubmit)="registerUser(loginForm.value)">
     <h1>Registro Paciente</h1>
     <br>
-
     <div>
         <input type="file" name="profile" (change)="onFileSelect($event)" />
     </div>
@@ -59,6 +58,11 @@
     <div class="input-group">
         <span class="input-group-text btn btn-secondary" id="basic-addon1">Cedula Identidad</span>
         <input type="text" class="form-control" placeholder="Nombre" formControlName="Ci">
+    </div>
+    <br>
+    <div class="input-group">
+        <span class="input-group-text btn btn-secondary" id="basic-addon1">Cedula Expedida</span>
+        <input type="text" class="form-control" placeholder="Nombre" formControlName="ExpeditionCi">
     </div>
     <br>
     <div class="input-group">
@@ -123,7 +127,7 @@
         <!-- ! radioButton -->
         <h2>Antecedentes Patologicos</h2>
         <div class="form-check">
-            <input formControlName="patologias1" class="form-check-input" type="checkbox" value="1" id="defaultCheck1">
+            <input formControlName="PathologicalBackground" class="form-check-input" type="checkbox" value="1" id="defaultCheck1">
             <label class="form-check-label" for="defaultCheck1">
                 {{patologias[0]}}
             </label>
