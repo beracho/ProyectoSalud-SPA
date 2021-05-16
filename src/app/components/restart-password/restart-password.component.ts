@@ -21,6 +21,11 @@ export class RestartPasswordComponent implements OnInit {
     this.pwd2 = pwd2;
     const email: string = localStorage.getItem('UsernameOrEmail');
     const id: string = localStorage.getItem('idUser');
+    this.api.getUserById(id).subscribe(
+      data => {
+        console.log(data);
+      }
+    );
     // ! Update Password
     // ? console.log(id);
     // ? console.log(email);

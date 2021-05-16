@@ -57,7 +57,10 @@ export class RegistrationComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', this.loginForm.get('ImageFile').value);
 
-    this.httpClient.put<any>(`localhost:5000/api/patient/${localStorage.getItem('idUser')}/UploadPhoto`, formData).subscribe(
+    this.httpClient.put<any>(`localhost:5000/api/patient/${localStorage.getItem('idUser')}/UploadPhoto`, formData, {headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': `multipart/form-data`
+    }}).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
     );
@@ -75,7 +78,7 @@ export class RegistrationComponent implements OnInit {
       this.blobFile(imagen).then((res: any) => {
         this.imagenPrevia = res.base;
         this.uploadForm.get('ImageFile').setValue(event.target.files[0]);
-        console.log(this.imagenPrevia);
+        // console.log(this.imagenPrevia);
       });
     } else {
       console.log('No es imagen');

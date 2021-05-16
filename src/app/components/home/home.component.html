@@ -6,13 +6,37 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" routerLink="search">Buscar</a>
-            <a *ngIf="getRolName()===1 || getRolName()===0" class="nav-item nav-link" routerLink="registration">Registrar Paciente</a>
-            <a *ngIf="getRolName()===1" class="nav-item nav-link" routerLink="registrationAfi">Registrar Afiliafo</a>
-            <a *ngIf="getRolName()===1" class="nav-item nav-link" routerLink="registrationben">Registrar Beneficiario</a>
-            <a *ngIf="getRolName()===1" class="nav-item nav-link" routerLink="registroUser">Registrar Usuario</a>
-            <a  *ngIf="getRolName()===2" class="nav-item nav-link" routerLink="lisUser">Lista Usuario</a>
-            <a  *ngIf="getRolName()===2 || getRolName()===0" class="nav-item nav-link" routerLink="listpatient">Lista Pacientes</a>
-            
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false">Registrar</a>
+                <div class="dropdown-menu">
+                    <a *ngIf="getRolName()===1 || getRolName()===0" class="dropdown-item"
+                        routerLink="registration">Registrar Paciente</a>
+                        
+                    <div class="dropdown-divider"></div>
+                    <a *ngIf="getRolName()===1" class="dropdown-item" routerLink="registrationAfi">Registrar
+                        Afiliafo</a>
+                        
+                    <div class="dropdown-divider"></div>
+                    <a *ngIf="getRolName()===1" class="dropdown-item" routerLink="registrationben">Registrar
+                        Beneficiario</a>
+                        
+                    <div class="dropdown-divider"></div>
+                    <a *ngIf="getRolName()===1" class="dropdown-item" routerLink="registroUser">Registrar
+                        Usuario</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false">Lista</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" routerLink="lisUser">Lista Usuario</a>
+                    
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" routerLink="listpatient">Lista Pacientes</a>
+                </div>
+            </li>
+
             <span class="nav-item nav-link" (click)="salir()">Salir de La cuenta</span>
         </div>
     </div>

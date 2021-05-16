@@ -3,7 +3,7 @@ import { LoginI } from '../../models/Login.interface';
 import { ResponseI } from '../../models/Response.interface';
 import { ResponseUserI } from '../../models/ResponseUser.Interface';
 import { HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, ObservableInput } from 'rxjs';
 import { UserI } from 'src/app/models/User.model';
 import { PatientI } from 'src/app/models/PatientModel';
 
@@ -29,11 +29,18 @@ export class ServiceApiService {
     const path = this.url + 'register';
     return this.http.post<ResponseUserI>(path, form);
   }
+  getUserById(id): Observable<any>{
+    const token = localStorage.getItem('token');
+    // console.log(token);
 
+    return this.http.get<any>(`localhost:5000/api/Users/${id}`, {headers: {
+      Authorization: `Bearer ${token}`,
+    }});
+  }
 
   getUserList(): Observable<UserI[]> {
     // console.log(localStorage.getItem('token'));
-    const path = 'http://localhost:5000/api/Users';
+    const path = 'localhost:5000/api/Users';
     return this.http.get<UserI[]>(path,  {headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     }});
@@ -63,6 +70,7 @@ export class ServiceApiService {
       NewPassword: pwd
       } , {headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
+      'Content-Type': `application/json`
     }});
   }
 
