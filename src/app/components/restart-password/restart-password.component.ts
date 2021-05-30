@@ -10,7 +10,7 @@ export class RestartPasswordComponent implements OnInit {
   pwd = '';
   pwd2 = '';
   pass = '';
-  suceessw = false;
+  suceessw;
   img = '';
   dataUser;
   constructor(private api: ServiceApiService) { }
@@ -20,45 +20,32 @@ export class RestartPasswordComponent implements OnInit {
     this.api.getUserById(id).subscribe(
       data => {
         this.dataUser = data;
-        console.log(this.dataUser);
       }
     );
   }
 
-  resetPwd(pwd, pwd2, pass): void{
+  resetPwd(pwd, pwd2, pass): void {
     this.pwd = pwd;
     this.pwd2 = pwd2;
     const email: string = localStorage.getItem('UsernameOrEmail');
     const id: string = localStorage.getItem('idUser');
-    this.api.getUserById(id).subscribe(
-      data => {
-        console.log(data);
-      }
-    );
-    // ! Update Password
-    // ? console.log(id);
-    // ? console.log(email);
-    if (this.pwd === this.pwd2){
+    if (this.pwd === this.pwd2) {
       this.suceessw = false;
       this.api.updatePwd(pwd, pass, email, id).subscribe(
         (data) => {
           console.log(data);
         },
         err => {
-
-          if (err){
+          if (err) {
             console.log('ocurrio un error');
           }
-
         }
       );
       // console.log('eq');
-    }else{
+    } else {
       this.suceessw = true;
       // console.log('not eq');
     }
-
-
   }
 
 }

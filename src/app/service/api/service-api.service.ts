@@ -14,76 +14,94 @@ import { PatI } from 'src/app/models/PatI';
 })
 export class ServiceApiService {
 
-  url = 'http://localhost:5000/api/auth/';
+  url = 'http://localhost:5000/api/';
   token = `Bearer ${localStorage.getItem('token')}`;
-  constructor(private http: HttpClient) {
+  
+  constructor(private http: HttpClient) {}
 
+
+  onRegisterUser(form: UserI): Observable<ResponseUserI> {
+    const path = this.url + 'auth/register';
+    return this.http.post<ResponseUserI>(path, form);
   }
 
   onLogIn(form: LoginI): Observable<ResponseI> {
-
     // console.log(form);
-    const path = this.url + 'login';
+    const path = this.url + 'auth/login';
     // console.log(path);
-    return this.http.post<ResponseI>(path, form );
-  }
-  onRegisterUser(form: UserI): Observable<ResponseUserI>{
-    const path = this.url + 'register';
-    return this.http.post<ResponseUserI>(path, form);
-  }
-  getUserById(id): Observable<any>{
-    console.log(id);
-    const token = localStorage.getItem('token');
-    // console.log(token);
-    return this.http.get<any>(`http://localhost:5000/api/Users/${id}`, {headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': `application/json`,
-    }});
+    return this.http.post<ResponseI>(path, form);
   }
 
-  getUserList(): Observable<UserI[]> {
-    // console.log(localStorage.getItem('token'));
-    const path = 'localhost:5000/api/Users';
-    return this.http.get<UserI[]>(path,  {headers: {
-      Authorization: 'Bearer ' + localStorage.getItem('token'),
-    }});
-  }
-
-  getRegistrationNumber(numberReg): Observable<PatientI>{
-    const path = 'http://localhost:5000/api/patient/' + numberReg;
-    return this.http.get<PatientI>(path,  {
-      headers: {
-      Authorization: 'Bearer ' + localStorage.getItem('token'),
-      }
-    });
-  }
-  getPatientsList(): Observable<PatientI[]> {
-    // console.log(localStorage.getItem('token'));
-    const path = 'http://localhost:5000/api/patient';
-    return this.http.get<PatientI[]>(path,  {headers: {
-      Authorization: 'Bearer ' + localStorage.getItem('token'),
-    }});
-  }
-
-  updatePwd(pwd: string, pwdold: string, name: string, id: string): Observable<any>{
-    const path = 'http://localhost:5000/api/Users/' + id + '/ChangePassword';
+  
+  updatePwd(pwd: string, pwdold: string, name: string, id: string): Observable<any> {
+    const path = this.url+'Users/' + id + '/ChangePassword';
+    console.log(path);
+    console.log("new pas",pwd);
+    console.log("old pas",pwdold);
+    console.log("username",name);
     return this.http.put<any>(path, {
       UsernameOrEmail: name,
       CurrentPassword: pwdold,
       NewPassword: pwd
-      } , {headers: {
-      Authorization: 'Bearer ' + localStorage.getItem('token'),
-      'Content-Type': `application/json`
-    }});
+    }, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+        'Content-Type': `application/json`
+      }
+    });
+  }
+  
+  getUserList(): Observable<UserI[]> {
+    // console.log(localStorage.getItem('token'));
+    const path = this.url+'Users';
+    return this.http.get<UserI[]>(path, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      }
+    });
+  }
+  getUserById(id): Observable<any> {
+    // console.log(id);
+    const token = localStorage.getItem('token');
+    const path = this.url+'Users/'+id;
+    // console.log(token);
+    return this.http.get<any>(path, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': `application/json`,
+      }
+    });
   }
 
+  
   registerPatient(fomr: PatI): Observable<any> {
     // localhost:5000/api/patient
-    const path = 'http://localhost:5000/api/patient';
-    return this.http.post<ResponseUserI>(path, fomr, {headers: {
-      Authorization: 'Bearer ' + localStorage.getItem('token'),
-      'Content-Type': `application/json`
-    }} );
+    const path = this.url+'patient';
+    return this.http.post<ResponseUserI>(path, fomr, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+        'Content-Type': `application/json`
+      }
+    });
   }
+
+  getPatientsList(): Observable<PatientI[]> {
+    // console.log(localStorage.getItem('token'));
+    const path = this.url+'patient';
+    return this.http.get<PatientI[]>(path, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      }
+    });
+  }
+  getRegistrationNumber(numberReg): Observable<PatientI> {
+    const path = this.url+'patient/' + numberReg;
+    return this.http.get<PatientI>(path, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      }
+    });
+  }
+
 
 }
